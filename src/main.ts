@@ -16,6 +16,9 @@ const symbolsCheckbox: HTMLInputElement | null = document.querySelector("#check-
 
 const generatorButton: HTMLButtonElement | null = document.querySelector("#generate-password");
 
+const passwordInput: HTMLInputElement | null = document.querySelector("#password-input");
+const strengthSpan: HTMLElement | null = document.querySelector("#password-strength");
+
 generatorSectionButton?.addEventListener('click', () => {
     viewSwitcher("generator");
 });
@@ -36,6 +39,13 @@ generatorButton?.addEventListener('click', () => {
    }
 });
 
+passwordInput?.addEventListener('input', () => {
+    if (strengthSpan) {
+        strengthSpan.textContent = getStrength(passwordInput.value);
+    }
+});
+
+
 
 function viewSwitcher (viewId: "generator" | "checker"): void {
     if (viewId === "generator") {
@@ -52,12 +62,12 @@ function viewSwitcher (viewId: "generator" | "checker"): void {
     }
 }
 
-function generatePassword(useUppercase: boolean, useNumbers: boolean, useSymbols: boolean, length: number): string {
-    const lowercaseChars: string = 'abcdefghijklmnopqrstuvwxyz';
-    const uppercaseChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbersChars: string = '0123456789';
-    const symbolsChars: string = '!@#$%^&*()_+-=[]{}|;:",.<>/?';
+const lowercaseChars: string = 'abcdefghijklmnopqrstuvwxyz';
+const uppercaseChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numbersChars: string = '0123456789';
+const symbolsChars: string = '!@#$%^&*()_+-=[]{}|;:",.<>/?';
 
+function generatePassword(useUppercase: boolean, useNumbers: boolean, useSymbols: boolean, length: number): string {
     let chars: string = lowercaseChars;
     let password: string = "";
 
@@ -78,4 +88,33 @@ function generatePassword(useUppercase: boolean, useNumbers: boolean, useSymbols
     }
 
     return password;
+}
+
+function getStrength(password: string): string {
+    let score: number = 0;
+    for (const n of password) {
+        score += 2;
+        if (uppercaseChars.includes(n)) {
+            score += 10;
+        }
+        if (numbersChars.includes(n)) {
+            score += 10;
+        }
+        if (symbolsChars.includes(n)) {
+            score += 10;
+        }
+    }
+    if (password.length < 8) {
+        score -= 15;
+    }
+    if (score < 30) {
+        return "Very weak..."
+    } else if (score <= 50) {
+        return "Weak."
+    } else if (score <= 75) {
+        return "Medium."
+    } else if (score <= 99) {
+        return "Strong."
+    }
+    return "Very Strong!"
 }
