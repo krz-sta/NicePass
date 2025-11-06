@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NicePass</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./images/favicon_nicepass.png">
+    <script src="./dist/main.js" type="module"></script>
 </head>
 <body>
-    <header><h1>NicePass</h1></header>
-    <footer><a>GitHub Profile</a></footer>
+    <header>
+        <h1>NicePass</h1>
+        <h2>Secure Password Generator & Password Strength Checker</h2>
+    </header>
     <main>
-        
+        <div id="section-switcher">
+            <button id="switch-to-generator">Generate Password</button>
+            <button id="switch-to-checker">Check Password</button>
+        </div>
+
+        <section id="generator">
+            <h3>Generate a secure password</h3>
+            <input type="text" id="password-output" placeholder="Your new password" readonly>
+        </section>
+        <section id="checker" class="hidden">
+            <h3>Check the strength of your password</h3>
+            <input type="text" id="password-input" placeholder="Input your password">
+        </section>
     </main>
+    <footer><a href="https://github.com/krz-sta">GitHub Profile</a></footer>
 </body>
 </html>
