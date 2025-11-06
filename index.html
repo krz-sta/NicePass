@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NicePass</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./images/favicon_nicepass.png">
+    <script src="./dist/main.js" type="module"></script>
+</head>
+<body>
+    <header>
+        <h1>NicePass</h1>
+        <h2>Secure Password Generator & Strength Checker</h2>
+    </header>
+    <main>
+        <div id="section-switcher">
+            <button id="switch-to-generator" class="sel">Generate Password</button>
+            <button id="switch-to-checker">Check Password</button>
+        </div>
+
+        <section id="generator">
+            <h3 id="generator-title">Generate a secure password</h3>
+
+            <input type="text" id="password-output" placeholder="Your new password" readonly>
+            
+            <label for="length-slider" id="length-slider-label">Password length: <span id="length-value">12</span></label>
+            <input type="range" id="length-slider" min="5" max="50" value="12">
+            <div id="checkbox-div">
+                <div>
+                    <label for="check-uppercase">Uppercase letters</label>
+                    <input type="checkbox" id="check-uppercase" checked>
+                </div>
+                <div>
+                    <label for="check-numbers">Numbers</label>
+                    <input type="checkbox" id="check-numbers" checked>
+                </div>
+                <div>
+                    <label for="check-symbols">Symbols</label>
+                    <input type="checkbox" id="check-symbols" checked>
+                </div>
+            </div>
+            <button id="generate-password">Generate</button>
+        </section>
+
+        <section id="checker" class="hidden">
+            <h3>Check the strength of your password</h3>
+            <input type="text" id="password-input" placeholder="Input your password">
+            <p>Password strength: <span id="password-strength">?</span></p>
+        </section>
+    </main>
+    <footer>Layout made for desktops, <a href="https://github.com/krz-sta">GitHub Profile</a></footer>
+</body>
+</html>

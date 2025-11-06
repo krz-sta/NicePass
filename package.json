@@ -1,0 +1,24 @@
+{
+  "name": "nicepass",
+  "version": "1.0.0",
+  "description": "Password Generator &amp; Strength Checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krz-sta/NicePass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/krz-sta/NicePass/issues"
+  },
+  "homepage": "https://github.com/krz-sta/NicePass#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
