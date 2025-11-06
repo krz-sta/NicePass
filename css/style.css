@@ -17,7 +17,7 @@ html {
 body {
     display: grid;
     grid-template-areas: "he" "ma" "fo";
-    grid-template-rows: 125px 1fr 50px;
+    grid-template-rows: 125px 1fr 50px; 
     grid-template-columns: 100%;
     height: 100%;
     background-color: #090e1a;
@@ -37,9 +37,10 @@ main {
     display: grid;
     grid-template-areas: "swi" "gen";
     grid-template-columns: 100%;
-    grid-template-rows: 50px 400px;
+    grid-template-rows: auto 1fr; 
     grid-area: ma;
-    padding: 100px;
+    padding: 20px;
+    max-height: 425px;
 }
 
 footer {
@@ -53,11 +54,11 @@ footer {
 }
 
 h1 {
-    font-size: 75px;
+    font-size: clamp(40px, 8vw, 75px);
 }
 
 h2 {
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
 }
 
 #section-switcher {
@@ -67,15 +68,18 @@ h2 {
     align-items: center;
     justify-content: center;
     justify-self: center;
-    width: 600px;
+    max-width: 600px;
+    width: 100%; 
 }
 
 #section-switcher button {
     background-color: #0b1425;
-    width: 300px;
-    height: 100%;
+    width: 50%;
+    height: auto;
+    padding: 10px 0;
     border-radius: 25px 25px 0px 0px;
     border: none;
+    font-size: clamp(12px, 3vw, 16px);
 }
 
 #section-switcher .sel {
@@ -85,8 +89,9 @@ h2 {
 #generator {
     justify-self: center;
     display: grid;
-    width: 600px;
-    grid-template-rows: 2fr 3fr 3fr 3fr 3fr;
+    max-width: 600px;
+    width: 100%; 
+    grid-template-rows: auto auto auto auto auto; 
     grid-template-columns: 35% 65%;
     grid-template-areas: 
         "gt gt"
@@ -96,7 +101,7 @@ h2 {
         "gp gp";
     grid-area: gen;
     background-color: #232c41;
-    padding: 35px;
+    padding: 20px; 
     border-radius: 0px 0px 25px 25px;
 }
 
@@ -110,10 +115,12 @@ h3 {
     grid-area: po;
     width: 100%;
     text-align: center;
+    height: 50px;
     border-radius: 25px;
     border: none;
     color: #090e1a;
     font-size: 16px;
+    padding: 0 15px;
 }
 
 #length-slider-label {
@@ -128,10 +135,14 @@ h3 {
 #checkbox-div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     grid-area: cd;
-    justify-content: space-around;
+    flex-wrap: wrap; 
+}
+
+#checkbox-div label {
+    min-width: 100px;
 }
 
 #generate-password {
@@ -140,17 +151,22 @@ h3 {
     border: none;
     background-color: #537ddf;
     color: #090e1a;
-    width: 300px;
+    max-width: 300px;
+    width: 100px;
     justify-self: center;
-    font-size: 30px;
+    align-self: center;
+    font-size: 20px;
+    height: 50px;
+    margin-top: 10px;
 }
 
 #checker {
     justify-self: center;
     display: grid;
-    width: 600px;
+    max-width: 600px;
+    max-height: 300px;
     background-color: #232c41;
-    padding: 35px;
+    padding: 35px 20px;
     border-radius: 0px 0px 25px 25px;
     grid-area: gen;
 }
