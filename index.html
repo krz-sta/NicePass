@@ -11,21 +11,38 @@
 <body>
     <header>
         <h1>NicePass</h1>
-        <h2>Secure Password Generator & Password Strength Checker</h2>
+        <h2>Secure Password Generator & Strength Checker</h2>
     </header>
     <main>
         <div id="section-switcher">
-            <button id="switch-to-generator">Generate Password</button>
+            <button id="switch-to-generator" class="sel">Generate Password</button>
             <button id="switch-to-checker">Check Password</button>
         </div>
 
         <section id="generator">
-            <h3>Generate a secure password</h3>
+            <h3 id="generator-title">Generate a secure password</h3>
+
             <input type="text" id="password-output" placeholder="Your new password" readonly>
+            
+            <label for="length-slider" id="length-slider-label">Password length: <span id="length-value">12</span></label>
+            <input type="range" id="length-slider" min="5" max="50" value="12">
+            <div id="checkbox-div">
+            <label for="check-uppercase">Uppercase letters</label>
+                <input type="checkbox" id="check-uppercase" checked>
+                
+                <label for="check-numbers">Numbers</label>
+                <input type="checkbox" id="check-numbers" checked>
+                
+                <label for="check-symbols">Symbols</label>
+                <input type="checkbox" id="check-symbols" checked>
+            </div>
+            <button id="generate-password">Generate</button>
         </section>
+
         <section id="checker" class="hidden">
             <h3>Check the strength of your password</h3>
             <input type="text" id="password-input" placeholder="Input your password">
+
         </section>
     </main>
     <footer><a href="https://github.com/krz-sta">GitHub Profile</a></footer>

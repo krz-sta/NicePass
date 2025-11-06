@@ -1,18 +1,81 @@
-document.querySelector("#switch-to-generator")?.addEventListener('click', () => {
+const generatorSection: HTMLElement | null = document.querySelector("#generator");
+const checkerSection: HTMLElement | null = document.querySelector("#checker");
+
+const generatorSectionButton: HTMLButtonElement | null = document.querySelector("#switch-to-generator");
+const checkerSectionButton: HTMLButtonElement | null = document.querySelector("#switch-to-checker");
+
+const generatedPasswordTB: HTMLInputElement | null = document.querySelector("#password-output");
+
+const lengthSliderLabel: HTMLLabelElement | null = document.querySelector("#length-slider-label");
+const lengthSliderSpan: HTMLElement | null = document.querySelector("#length-value");
+const lengthSlider: HTMLInputElement | null = document.querySelector("#length-slider");
+
+const uppercaseCheckbox: HTMLInputElement | null = document.querySelector("#check-uppercase");
+const numbersCheckbox: HTMLInputElement | null = document.querySelector("#check-numbers");
+const symbolsCheckbox: HTMLInputElement | null = document.querySelector("#check-symbols");
+
+const generatorButton: HTMLButtonElement | null = document.querySelector("#generate-password");
+
+generatorSectionButton?.addEventListener('click', () => {
     viewSwitcher("generator");
 });
 
-document.querySelector("#switch-to-checker")?.addEventListener('click', () => {
+checkerSectionButton?.addEventListener('click', () => {
     viewSwitcher("checker");
 });
 
+lengthSlider?.addEventListener('input', () => {
+    if (lengthSlider && lengthSliderSpan) {
+        lengthSliderSpan.textContent = lengthSlider.value;
+    }
+});
+
+generatorButton?.addEventListener('click', () => {
+   if (generatedPasswordTB && uppercaseCheckbox && numbersCheckbox && symbolsCheckbox && lengthSlider) {
+        generatedPasswordTB.value = generatePassword(uppercaseCheckbox?.checked, numbersCheckbox?.checked, symbolsCheckbox?.checked, parseInt(lengthSlider?.value));
+   }
+});
+
+
 function viewSwitcher (viewId: "generator" | "checker"): void {
     if (viewId === "generator") {
-        document.querySelector("#generator")?.classList.remove("hidden");
-        document.querySelector("#checker")?.classList.add("hidden");
+        generatorSection?.classList.remove("hidden");
+        checkerSection?.classList.add("hidden");
+        generatorSectionButton?.classList.add("sel");
+        checkerSectionButton?.classList.remove("sel");
     }
     if (viewId === "checker") {
-        document.querySelector("#generator")?.classList.add("hidden");
-        document.querySelector("#checker")?.classList.remove("hidden");
+        generatorSection?.classList.add("hidden");
+        checkerSection?.classList.remove("hidden");
+        generatorSectionButton?.classList.remove("sel");
+        checkerSectionButton?.classList.add("sel");
     }
+}
+
+function generatePassword(useUppercase: boolean, useNumbers: boolean, useSymbols: boolean, length: number): string {
+    const lowercaseChars: string = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercaseChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbersChars: string = '0123456789';
+    const symbolsChars: string = '!@#$%^&*()_+-=[]{}|;:",.<>/?';
+
+    let chars: string = lowercaseChars;
+    let password: string = "";
+
+    if (useUppercase) {
+        chars += uppercaseChars;
+    }
+
+    if (useNumbers) {
+        chars += numbersChars;
+    }
+
+    if (useSymbols) {
+        chars += symbolsChars;
+    }
+
+    for (let i = 0; i < length; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    return password;
 }

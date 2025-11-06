@@ -1,12 +1,156 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #203349;
-    color: #c1d3f0;
+    color: #edf0f7;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.hidden {
+#generator.hidden, #checker.hidden {
     display: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-areas: "he" "ma" "fo";
+    grid-template-rows: 125px 1fr 50px;
+    grid-template-columns: 100%;
+    height: 100%;
+    background-color: #090e1a;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: he;
+    background-color: #0e1832;
+    border-radius: 0px 0px 50px 50px;
+}
+
+main {
+    display: grid;
+    grid-template-areas: "swi" "gen";
+    grid-template-columns: 100%;
+    grid-template-rows: 50px 400px;
+    grid-area: ma;
+    padding: 100px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: fo;
+    background-color: #0e1832;
+    border-radius: 50px 50px 0px 0px;
+}
+
+h1 {
+    font-size: 75px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+#section-switcher {
+    grid-area: swi;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 600px;
+}
+
+#section-switcher button {
+    background-color: #0b1425;
+    width: 300px;
+    height: 100%;
+    border-radius: 25px 25px 0px 0px;
+    border: none;
+}
+
+#section-switcher .sel {
+    background-color: #232c41;
+}
+
+#generator {
+    justify-self: center;
+    display: grid;
+    width: 600px;
+    grid-template-rows: 2fr 3fr 3fr 3fr 3fr;
+    grid-template-columns: 35% 65%;
+    grid-template-areas: 
+        "gt gt"
+        "po po"
+        "lsl ls"
+        "cd cd"
+        "gp gp";
+    grid-area: gen;
+    background-color: #232c41;
+    padding: 35px;
+    border-radius: 0px 0px 25px 25px;
+}
+
+h3 {
+    grid-area: gt;
+    text-align: center;
+    font-size: 25px;
+}
+
+#password-output {
+    grid-area: po;
+    width: 100%;
+    text-align: center;
+    border-radius: 25px;
+    border: none;
+    color: #090e1a;
+    font-size: 16px;
+}
+
+#length-slider-label {
+    grid-area: lsl;
+    align-self: center;
+}
+
+#length-slider {
+    grid-area: ls;
+}
+
+#checkbox-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-area: cd;
+    justify-content: space-around;
+}
+
+#generate-password {
+    grid-area: gp;
+    border-radius: 25px;
+    border: none;
+    background-color: #537ddf;
+    color: #090e1a;
+    width: 300px;
+    justify-self: center;
+    font-size: 30px;
+}
+
+#checker {
+    justify-self: center;
+    display: grid;
+    width: 600px;
+    background-color: #232c41;
+    padding: 35px;
+    border-radius: 0px 0px 25px 25px;
+    grid-area: gen;
 }
